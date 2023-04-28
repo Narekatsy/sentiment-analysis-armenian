@@ -78,9 +78,9 @@ def extract_words(book_name):
     
     return df
 
-def remove_title(df):
+def remove_title(df, title_length):
     # Remove the title, drop the rows with none values
-    df = df.drop(index=range(3))
+    df = df.drop(index=range(title_length))
     df = df.dropna(axis=0, thresh=2)
     
     return df

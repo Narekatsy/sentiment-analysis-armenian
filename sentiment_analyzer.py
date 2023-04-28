@@ -38,6 +38,7 @@ def split_and_analyze(df, num_splits = 20):
 
 
 if __name__ == "__main__":
+    # The book file should be downloaded from EANC electornic library
     book_title = "Book_name.htm"
     
     df = ps.extract_words(book_title)

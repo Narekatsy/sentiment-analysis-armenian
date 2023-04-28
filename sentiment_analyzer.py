@@ -38,10 +38,10 @@ def split_and_analyze(df, num_splits = 20):
 
 
 if __name__ == "__main__":
-    book_title = "Tumanyan_tales2.htm"
+    book_title = "Book_name.htm"
     
     df = ps.extract_words(book_title)
-    df = ps.remove_title(df)
+    df = ps.remove_title(df, 3)
     
     book_translation = df['translation']
     get_avg_sentiment(book_translation)

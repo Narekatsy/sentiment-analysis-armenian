@@ -41,8 +41,11 @@ if __name__ == "__main__":
     # The book file should be downloaded from EANC electornic library
     book_title = "Book_name.htm"
     
-    df = ps.extract_words(book_title)
-    df = ps.remove_title(df, 3)
+    # Creationg of a dataframe from a html file
+    #df = ps.extract_words(book_title)
+    
+    # Creation of a dataframe from eanc.net library URL. Example below:
+    df = ps.extract_words_web("http://eanc.net/EANC/library/Fiction/Original/Raffi/Short_Stories_8.htm?page=1&interface_language=en", 2)
     
     book_translation = df['translation']
     get_avg_sentiment(book_translation)

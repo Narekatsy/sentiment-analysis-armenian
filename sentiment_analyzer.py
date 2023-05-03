@@ -32,7 +32,6 @@ def split_and_analyze(df, num_splits = 20):
     for chunk in sentence_chunks:
         chunk_sentence = " ".join(chunk)
         sentiment_scores.append(analyzer.polarity_scores(chunk_sentence)['compound'])
-        #print(f"{chunk_sentence}\n LENGTH: {len(chunk_sentence)}")
         
     return sentiment_scores
 

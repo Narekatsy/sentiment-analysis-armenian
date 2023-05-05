@@ -44,11 +44,19 @@ def analyze_textblob(df, num_splits = 10):
     sentence_chunks = [all_sentences[i:i + chunk_size] for i in range(0, len(all_sentences), chunk_size)]
 
     # Analyze the sentiment of each sentence chunk
-    sentiment_scores = []
+    sentiment_scores_tuple = []
     for chunk in sentence_chunks:
         chunk_sentence = " ".join(chunk)
         sentiment = TextBlob(chunk_sentence).sentiment.polarity
-        sentiment_scores.append(sentiment)
+        polarity = sentiment.polarity
+        subjectivity = sentiment.subjectivity
+        sentiment_scores_tuple.append((polarity, subjectivity))
+
+    # Calculating the sentiment scores taking into account both polarity and subjectivity scores
+    # Weights can be changed, based on how important is polarity or subjectivity
+    polarity_weight = 0.67
+    subjectivity_weight = 0.33
+    sentiment_scores = [polarity_weight * tup[0] + subjectivity_weight * tup[1] for tup in sentiment_scores_tuple]
 
     return sentiment_scores
 

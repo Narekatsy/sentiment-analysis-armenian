@@ -19,7 +19,7 @@ def get_avg_sentiment(translations):
         
     return scores
 
-def split_and_analyze(df, num_splits = 20):
+def analyze_vader(df, num_splits = 20):
     # Combine all lists in dataframe into a single list of sentences
     all_sentences = [' '.join(row) for row in df]
     
@@ -33,6 +33,23 @@ def split_and_analyze(df, num_splits = 20):
         chunk_sentence = " ".join(chunk)
         sentiment_scores.append(analyzer.polarity_scores(chunk_sentence)['compound'])
         
+    return sentiment_scores
+
+def analyze_textblob(df, num_splits = 10):
+    # Combine all lists in dataframe into a single list of sentences
+    all_sentences = [' '.join(row) for row in df]
+
+    # Split the sentences into num_splits parts
+    chunk_size = len(all_sentences) // num_splits
+    sentence_chunks = [all_sentences[i:i + chunk_size] for i in range(0, len(all_sentences), chunk_size)]
+
+    # Analyze the sentiment of each sentence chunk
+    sentiment_scores = []
+    for chunk in sentence_chunks:
+        chunk_sentence = " ".join(chunk)
+        sentiment = TextBlob(chunk_sentence).sentiment.polarity
+        sentiment_scores.append(sentiment)
+
     return sentiment_scores
 
 

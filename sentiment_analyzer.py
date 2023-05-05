@@ -52,7 +52,7 @@ if __name__ == "__main__":
     scores = split_and_analyze(book_translation, 10)
     x = range(len(scores))
     
-    f = interp1d(x, scores, kind='cubic')
+    f = interp1d(x, scores, kind='quadratic')
 
     # Create an array of points to evaluate the interpolator
     x_interp = np.linspace(0, len(scores) - 1, 100)

@@ -19,11 +19,12 @@ def get_avg_sentiment(translations):
         
     return scores
 
-def analyze_vader(df, num_splits = 20):
+def analyze_vader(df):
     # Combine all lists in dataframe into a single list of sentences
     all_sentences = [' '.join(row) for row in df]
-    
-    # Split the sentences into num_splits parts
+        
+    # Split the text into equal parts
+    num_splits = 4 + round(len(df)/1000)
     chunk_size = len(all_sentences) // num_splits
     sentence_chunks = [all_sentences[i:i+chunk_size] for i in range(0, len(all_sentences), chunk_size)]
     
@@ -35,11 +36,12 @@ def analyze_vader(df, num_splits = 20):
         
     return sentiment_scores
 
-def analyze_textblob(df, num_splits = 10):
+def analyze_textblob(df):
     # Combine all lists in dataframe into a single list of sentences
     all_sentences = [' '.join(row) for row in df]
 
-    # Split the sentences into num_splits parts
+    # Split the text into equal parts
+    num_splits = 4 + round(len(df)/1000)
     chunk_size = len(all_sentences) // num_splits
     sentence_chunks = [all_sentences[i:i + chunk_size] for i in range(0, len(all_sentences), chunk_size)]
 

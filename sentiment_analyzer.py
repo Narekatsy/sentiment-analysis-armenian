@@ -76,7 +76,7 @@ if __name__ == "__main__":
     book_translation = df['translation']
     get_avg_sentiment(book_translation)
 
-    scores = split_and_analyze(book_translation, 10)
+    scores = analyze_textblob(book_translation, 10) #Or analyze_vader instead of analyze_textblob
     x = range(len(scores))
     
     f = interp1d(x, scores, kind='quadratic')

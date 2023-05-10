@@ -1,4 +1,5 @@
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from textblob import TextBlob
 import xml_parser as ps
 from scipy.interpolate import interp1d
 import numpy as np
@@ -49,7 +50,7 @@ def analyze_textblob(df):
     sentiment_scores_tuple = []
     for chunk in sentence_chunks:
         chunk_sentence = " ".join(chunk)
-        sentiment = TextBlob(chunk_sentence).sentiment.polarity
+        sentiment = TextBlob(chunk_sentence).sentiment
         polarity = sentiment.polarity
         subjectivity = sentiment.subjectivity
         sentiment_scores_tuple.append((polarity, subjectivity))

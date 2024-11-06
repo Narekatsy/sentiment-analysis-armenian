@@ -1,6 +1,6 @@
 # Sentiment Analysis Tool for Armenian Books
 
-This repository contains a Python-based tool for performing sentiment analysis on texts from the **Eastern Armenian National Corpus (EANC)**. The tool uses two popular sentiment analysis libraries—**VADER** and **TextBlob**—to analyze the sentiment of Armenian books. The goal is to provide insights into the sentiment trends and overall emotional tone of the literary works.
+This repository contains a Python-based tool for performing sentiment analysis on texts from the **Eastern Armenian National Corpus (EANC)**. The tool uses two popular sentiment analysis libraries — **VADER** and **TextBlob** — to analyze the sentiment of Armenian books. The goal is to provide insights into the sentiment trends and overall emotional tone of the literary works.
 
 ## Features
 
